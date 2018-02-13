@@ -1,0 +1,15 @@
+version: "2"
+services:
+  node:
+    image: "node:9.5-alpine"
+    # build: .
+    working_dir: /opt/node/app
+    volumes:
+      - $PWD:/opt/node/app
+    entrypoint: npm run start
+    tty: true # corresponds to -t in "docker run"
+    stdin_open: true # corresponds to -i in "docker run"
+
+
+# USAGE
+# docker-compose -f deeploy/docker-compose.yml up
