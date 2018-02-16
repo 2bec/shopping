@@ -1,6 +1,21 @@
 import React from 'react';
-import Card from './Card';
+
+import {GridList, GridTile} from 'material-ui/GridList';
+
+import ProductCard from './Card';
 import products from '../fixtures/products.json'
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 1024,
+    height: 1024,
+  },
+}
 
 class ProductList extends React.Component {
 	constructor(props) {
@@ -18,11 +33,14 @@ class ProductList extends React.Component {
 	render() {
 		if (this.state.data.length > 0) {
 			return (
-				<div>
-					<h1>Products List</h1>
+				<div style={styles.root}>
+					<GridList
+						cellHeight={180}
+						style={styles.gridList}
+					>
 					{
 						this.state.data.map(function (product) {
-							return <Card 
+							return <ProductCard 
 									key={product.id}
 									name={product.name}
 									description={product.description}
@@ -30,10 +48,12 @@ class ProductList extends React.Component {
 									price={product.price}
 									condition={product.condition}
 									seller={product.seller}
+									avatar="http://via.placeholder.com/350x180"
 									image="http://via.placeholder.com/350x180"
 							/>
 						})
 					}
+					</GridList>
 				</div>
 			);
 		}

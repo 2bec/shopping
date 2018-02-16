@@ -1,63 +1,51 @@
 import React from 'react';
 
-function CardImage(props) {
-	return (
-		<img src={props.src} />
-	)
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
+
+const styles = {
+  button: {
+    margin: 12,
+  },
 }
 
-function CardContent(props) {
-	return (
-		<div className="content">
-			<CardImage
-				src={props.image}
-			/>
-			<div className="header">{props.title}</div>
-			<div className="meta">
-				<span className="date">{props.meta}</span>
-			</div>
-			<div className="description">{props.description}</div>
-		</div>
-	)
-}
-
-function Button(props) {
-	return (
-		<input type="button" value={props.children} />
-	)
-}
-
-function CardBotton(props) {
-	return (
-		<div className="extra content">
-			<div className='ui two buttons'>
-				<Button basic color='red'>Comprar</Button>
-			</div>
-		</div>
-	)
-}
-
-class Card extends React.Component {
+export default class ProductCard extends React.Component {
 
 	constructor(props){
 		super(props);
 	}
 
-	render() {
-	return (
-		<div className="ui card">
-			<CardContent 
-				image={this.props.image}
-				title={this.props.name}
-				meta={this.props.meta}
-				description={this.props.description}
-				condition={this.props.condition}
-				seller={this.props.seller}
-			/>
-			<CardBotton />
-		</div>
-	);
-	}
-}
+	render(){
 
-export default Card;
+        return (
+			<Card>
+				<CardHeader
+					title={this.props.name}
+					subtitle={this.props.meta}
+					avatar={this.props.avatar}
+				/>
+
+				<CardMedia overlay={<CardTitle title={this.props.condition} subtitle={this.props.price} /> }>
+					<img src={this.props.image} alt="" />
+				</CardMedia>
+
+				<CardTitle title={this.props.name} subtitle={this.props.meta} />
+				
+				<CardText>
+					{this.props.description}
+				</CardText>
+
+				<CardActions>
+					<RaisedButton
+						label="Comprar"
+						labelPosition="before"
+						primary={true}
+						icon={<FontIcon className="muidocs-icon-cart" />}
+						style={styles.button}
+					/>
+				</CardActions>
+			</Card>
+        );
+    }
+}
