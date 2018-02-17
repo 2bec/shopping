@@ -9,7 +9,8 @@ services:
     entrypoint: npm run start
     tty: true # corresponds to -t in "docker run"
     stdin_open: true # corresponds to -i in "docker run"
-
+    expose:
+      - "3000"
 
 # USAGE
 # docker-compose -f deeploy/docker-compose.yml up
