@@ -26,12 +26,12 @@ export default class ProductCard extends React.Component {
 					avatar={this.props.avatar}
 				/>
 
-				<CardMedia overlay={<CardTitle title={this.props.condition} subtitle={this.props.price} /> }>
+				<CardMedia>
 					<img src={this.props.image} alt="" />
 				</CardMedia>
 
 				<CardTitle title={this.props.name} subtitle={this.props.meta} />
-				
+
 				<CardText>
 					{this.props.description}
 				</CardText>
