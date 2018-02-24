@@ -1,6 +1,13 @@
 import React from 'react';
 
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {
+	Card,
+	CardActions,
+	CardHeader,
+	CardMedia,
+	CardTitle,
+	CardText
+} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 
@@ -26,8 +33,10 @@ export default class ProductCard extends React.Component {
 					avatar={this.props.avatar}
 				/>
 
-				<CardMedia overlay={<CardTitle title={this.props.condition} subtitle={this.props.price} /> }>
-					<img src={this.props.image} alt="" />
+				<CardMedia overlay={
+					<CardTitle title={this.props.condition} subtitle={this.props.price} /> 
+				}>
+					<img src={this.props.image} alt="{this.props.image}" />
 				</CardMedia>
 
 				<CardTitle title={this.props.name} subtitle={this.props.meta} />
