@@ -21,7 +21,7 @@ const config = {
         ],
         loaders: 'babel-loader',
         query: {
-          presets : ['react', 'es2015'],
+          presets : ['react'],
         }
     }]
   },
