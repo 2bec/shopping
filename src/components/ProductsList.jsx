@@ -1,72 +1,57 @@
 import React from 'react';
 
-import {GridList, GridTile} from 'material-ui/GridList';
+import { Card } from 'semantic-ui-react';
 
-import ProductCard from './Card';
+import Product from './Product';
 import products from '../fixtures/products.json'
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 1024,
-    height: 'auto',
-    overflowY: 'auto',
-  },
-  indvCell: {
-    height: 'auto',
-    borderRadius: 25,
-  }
+
+const style = {
+    h1: {
+        marginTop: '3em',
+    },
+    h2: {
+        margin: '4em 0em 2em',
+    },
+    h3: {
+        marginTop: '2em',
+        padding: '2em 0em',
+    },
+    last: {
+        marginBottom: '300px',
+    },
 }
 
-class ProductList extends React.Component {
-   constructor(props) {
-      super(props);
 
-      this.state = {
-         data: []
-      };
-   }
+export default class ProductList extends React.Component {
+    constructor(props) {
+        super(props);
 
-   componentDidMount() {
-      this.setState({data: products});
-   }
+        this.state = {
+            data: []
+        };
+    }
 
-   render() {
-      if (this.state.data.length > 0) {
-         return (
-            <div style={styles.root}>
-               <GridList
-                  cellHeight={180}
-                  style={styles.gridList}
-               >
-               {
-                  this.state.data.map(function (product) {
-                     return <GridTile key={product.id} style={styles.indvCell}>
-                        <ProductCard
-                           key={product.id}
-                           name={product.name}
-                           description={product.description}
-                           meta={product.meta}
-                           price={product.price}
-                           condition={product.condition}
-                           seller={product.seller}
-                           avatar="http://via.placeholder.com/180x90"
-                           image="http://via.placeholder.com/180x90"
-                        />
-                     </GridTile>
-                  })
-               }
-               </GridList>
-            </div>
-         );
-      }
+    componentDidMount() {
+        this.setState({data: products});
+    }
 
-      return (<span>Loading...</span>);
-   }
+    addToCart(e, name) {
+        console.log('addToCart: ', e, name);
+    }
+
+    render() {
+        const {data} = this.state
+
+        return (
+                <Card.Group>
+                {
+                    data.map(function (product) {
+                        return (<Product key={product.id} id={product.id} name={product.name} stock={product.stock} price={product.price} category={product.meta}  description={product.description} condition={product.condition} />)
+                    },this)
+                }
+                </Card.Group>
+        );
+    }
+
 }
-
-export default ProductList;

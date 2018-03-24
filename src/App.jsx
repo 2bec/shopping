@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ContentWrapper from 'components/ContentWrapper'
+import { Container } from 'semantic-ui-react';
+
+import TopMenu from 'components/Menu';
+
+import ProductList from 'components/ProductsList';
 
 
 /*
@@ -10,7 +14,10 @@ import ContentWrapper from 'components/ContentWrapper'
 const destination = document.getElementById('root');
 
 const Main = () => (
-  <ContentWrapper />
+  <Container>
+    <TopMenu />
+    <ProductList />
+  </Container>
 );
 
 ReactDOM.render(
